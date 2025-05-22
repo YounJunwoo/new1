@@ -2,18 +2,21 @@ import React from "react";
 import "./SettingAccount.css";
 import Settingbar from "../components/Settingbar";
 import syncIcon from "../icons/lucide/sync.svg";
-import { generateUniqueSerialIds } from "../utils/serialIdGenerator";
+import { getAccountInfo, getLoggedInEmail } from "../utils/storage";
 
-const accounts = [
-  {
-    email: "",
-    date: "",
-    role: "",
-    id: "",
-    active: "",
-  },
-];
-const serialId = generateUniqueSerialIds(accounts);
+const accountInfo = getAccountInfo();
+const isLoggedIn = !!getLoggedInEmail();
+
+const accounts = [];
+if (accountInfo.email) {
+  accounts.push({
+    email: accountInfo.email,
+    date: accountInfo.date || "",
+    role: accountInfo.role || "관리자",
+    id: accountInfo.id || "",
+    active: isLoggedIn, 
+  });
+}
 
 const SettingAccount = () => (
   <div className="settingbar-row">
@@ -49,7 +52,9 @@ const SettingAccount = () => (
             <td>{acc.role}</td>
             <td>{acc.id}</td>
             <td>
-              {acc.active ? (
+              {acc.active === "" || acc.active == null ? (
+                ""
+              ) : acc.active ? (
                 <span className="accountActive">
                   <span className="dot" /> 활성화
                 </span>

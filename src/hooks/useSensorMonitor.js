@@ -3,12 +3,13 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 function useSensorMonitor(warningNotification, pollingInterval = 5000) {
   const [sensorData, setSensorData] = useState(null);
   const [loading, setLoading] = useState(true);
-
+//각센서의 api url과 임계치 설정
   const sensors = useMemo(() => [
     { key: 'temperature', label: '온도', unit: '°C', url: '', threshold: '' },
     { key: 'humidity', label: '습도', unit: '%', url: '', threshold: '' },
-    { key: 'co2', label: '이산화탄소 농도', unit: 'ppm', url: '', threshold:'' },
-    { key: 'light', label: '조도', unit: 'Lux', url: '', threshold: '' },
+    { key: 'soil', label: '토양습도', unit: '', url: '', type: 'boolean' },
+    { key: 'light', label: '일사량', unit: 'wh/㎡', url: '', threshold: '' },
+    { key: 'water', label: '물통칸', unit: '%', url: '', type: 'boolean' },
   ], []);
 
   const fetchAllSensorData = useCallback(async () => {
@@ -18,7 +19,9 @@ function useSensorMonitor(warningNotification, pollingInterval = 5000) {
           const response = await fetch(sensor.url); //센서 api 삽입
           const data = await response.json();
           const value = data.value;
-
+          if (sensor.type === 'boolean') {
+            if (value === 'true') return { [sensor.key]:value ? 'ON' : 'OFF' };
+          }
           if (value > sensor.threshold) {
             warningNotification(`${sensor.label} 임계치 초과`, {
               body: `현재 ${sensor.label}는 ${value}${sensor.unit}입니다.`,

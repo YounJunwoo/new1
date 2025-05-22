@@ -25,7 +25,7 @@ const SensorMonitor = ({ warningNotification }) => {
     <div className="card soil">
       <div className="card-title">토양습도</div>
       <div className="card-value">{sensorData?.soil ?? '-'}</div>
-      <div className="card-unit">%</div>
+      <div className="card-unit">&nbsp;</div>
     </div>
     <div className="card insolation">
       <div className="card-title">일사량</div>
@@ -35,7 +35,7 @@ const SensorMonitor = ({ warningNotification }) => {
     <div className="card water">
       <div className="card-title">물통칸</div>
       <div className="card-value">{sensorData?.water ?? '-'}</div>
-      <div className="card-unit">%</div>
+      <div className="card-unit">&nbsp;</div>
     </div>
   </div>
 </div>

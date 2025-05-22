@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
+import { setLoggedInEmail, setAccountInfo } from '../../utils/storage';
+import { generateUniqueSerialIds } from '../../utils/serialIdGenerator';
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState('');
@@ -8,9 +10,19 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const date = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const role = '관리자';
+    const id = generateUniqueSerialIds([{ email }])[0];
+    const active = true;
+    setAccountInfo({ email, date, role, id, active });
+    setLoggedInEmail(email);
+  };
+
   return (
     <div className="signup-container">
-      <form className="signup-form">
+      <form className="signup-form" onSubmit={handleSignUp}>
         <label>이름</label>
         <input
           type="text"

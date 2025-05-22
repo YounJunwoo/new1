@@ -1,12 +1,12 @@
 .forecast-list {
   display: flex;
   flex-direction: row;
-  gap: 35px;
+  gap: 50px;
   justify-content: center;
 }
 
 .forecast-container {
-  margin-top: 32px;
+  margin-top: 2px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -33,8 +33,5 @@
   margin-bottom: 4px;
 }
 
-.forecast-container, .forecast-list, .forecast-day {
-  background-color: transparent !important;
-}
 
 
