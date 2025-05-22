@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function hourToNum(hourStr) {
-  return parseInt(hourStr.split(':')[0], 10);
-}
-
-const useForecast = (city) => {
+const useForecast = ({lat, lon}) => {
   const [forecast, setForecast] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,12 +13,18 @@ const useForecast = (city) => {
       return;
     }
 
+    if (!lat || !lon) {
+      console.error('[useForecast] 위도 or 경도 누락');
+      setLoading(false);
+      return;
+    }
+
     const fetchForecast = async () => {
       setLoading(true);
       setError(null);
       try {
         const res = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=kr`
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`
         );
 
         let data;
@@ -36,29 +38,46 @@ const useForecast = (city) => {
           throw new Error(data.message || '날씨 API 요청 중 오류가 발생했습니다.');
         }
 
+        // 날짜별로 temp_max, temp_min의 최대/최소를 계산
         const dailyMap = {};
         data.list.forEach(item => {
           const date = item.dt_txt.slice(0, 10);
-          const hour = item.dt_txt.slice(11, 19);
-          if (
-            !dailyMap[date] ||
-            Math.abs(hourToNum(hour) - 18) < Math.abs(hourToNum(dailyMap[date].dt_txt.slice(11, 19)) - 18)
-          ) {
-            dailyMap[date] = item;
+          if (!dailyMap[date]) {
+            dailyMap[date] = {
+              ...item,
+              temp_max: item.main.temp_max,
+              temp_min: item.main.temp_min,
+              weather: item.weather,
+            };
+          } else {
+            dailyMap[date].temp_max = Math.max(dailyMap[date].temp_max, item.main.temp_max);
+            dailyMap[date].temp_min = Math.min(dailyMap[date].temp_min, item.main.temp_min);
           }
         });
 
         const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
         const sortedDates = Object.keys(dailyMap)
-          .filter(date => date > today) // 오늘 제외
+          .filter(date => date >= today)
           .sort();
 
-        const forecastList = sortedDates.slice(0, 5).map(date => dailyMap[date]);
+        // dailyMap의 각 날짜별 대표 item을 만들고, temp_max/min을 반영
+        const forecastList = sortedDates.slice(0, 6).map(date => {
+          const item = dailyMap[date];
+          return {
+            ...item,
+            main: {
+              ...item.main,
+              temp_max: item.temp_max,
+              temp_min: item.temp_min,
+            },
+            weather: item.weather,
+          };
+        });
 
         setForecast(forecastList);
       } catch (err) {
         console.error('[useForecast] 에러 발생:', err.message);
-        setError(null);
+        setError(err.message);
         setForecast([]);
       } finally {
         setLoading(false);
@@ -66,9 +85,10 @@ const useForecast = (city) => {
     };
 
     fetchForecast();
-  }, [city, API_KEY]);
+  }, [lat, lon, API_KEY]);
 
   return { forecast, loading, error };
 };
 
 export default useForecast;
+

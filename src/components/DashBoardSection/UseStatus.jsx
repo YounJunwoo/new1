@@ -4,26 +4,21 @@ import './UseStatus.css';
 
 const devices = [
   { name: '관수 펌프', sensorId: 'pump' },
-  { name: '냉각팬', sensorId: 'fan' },
-  { name: '창문 모터', sensorId: 'window-motor' },
   { name: 'LED', sensorId: 'led' },
   { name: '온도센서', sensorId: 'temp-sensor' },
   { name: '습도센서', sensorId: 'humidity-sensor' },
-  { name: 'CO₂센서', sensorId: 'co2-sensor' },
 ];
 
 const UsageStatus = () => {
   const prevStatuses = useRef(Array(devices.length).fill(false));
 
+  // 훅을 컴포넌트 최상위에서 순서대로 호출
   const pump = useSensorStatus('pump');
-  const fan = useSensorStatus('fan');
-  const motor = useSensorStatus('window-motor');
   const led = useSensorStatus('led');
   const temp = useSensorStatus('temp-sensor');
   const humidity = useSensorStatus('humidity-sensor');
-  const co2 = useSensorStatus('co2-sensor');
 
-  const rawStatuses = [pump, fan, motor, led, temp, humidity, co2];
+  const rawStatuses = [pump, led, temp, humidity];
 
   const statuses = rawStatuses.map((status, idx) => {
     if (!status.loading) {
@@ -79,7 +74,7 @@ const UsageStatus = () => {
           {devices.map((_, idx) => (
             <div className="body-cell" key={idx}>
               <div className="div">
-                <div className="text-wrapper-5">Cell text</div>
+                <div className="text-wrapper-5"></div>
               </div>
             </div>
           ))}

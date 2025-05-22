@@ -8,7 +8,7 @@ import userIcon from "../icons/lucide/user.svg";
 import globeIcon from "../icons/lucide/globe.svg";
 import hardDriveIcon from "../icons/lucide/hardDrive.svg";
 import timerIcon from "../icons/lucide/timer.svg";
-
+import { getLoggedInEmail } from "../utils/storage";
 
 const Setting = () => {
   return (
@@ -18,8 +18,8 @@ const Setting = () => {
         <div className="profileBox">
           <img src={profileIcon} alt="프로필" className="profileIcon" />
           <div className="profileInfo">
-            <div className="email">님</div>
-            <div className="mode">모드입니다</div>
+            <div className="email">{getLoggedInEmail()}님</div>
+            <div className="mode">관리자 모드입니다</div>
           </div>
         </div>
         <div className="settingMenuCard">
