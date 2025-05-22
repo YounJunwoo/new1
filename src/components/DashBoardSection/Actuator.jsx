@@ -6,8 +6,8 @@ const Actuator = () => {
   const [isManual, setIsManual] = React.useState(true);
 
   const pump = useActuatorControl("pump");
-  const fan = useActuatorControl("fan");
-  const windowMotor = useActuatorControl("window-motor");
+ // const fan = useActuatorControl("fan");
+ // const windowMotor = useActuatorControl("window-motor");
 
   return (
     <div className="actuator">
@@ -39,7 +39,7 @@ const Actuator = () => {
         </button>
       </div>
 
-      <div className="fan">
+    { /* <div className="fan">
         <div className="fan-text">냉각팬</div>
         <button
           className={`icon-button ${fan.isOn ? 'on' : 'off'}`}
@@ -59,7 +59,7 @@ const Actuator = () => {
         >
           {windowMotor.loading ? "..." : windowMotor.isOn ? 'ON' : 'OFF'}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

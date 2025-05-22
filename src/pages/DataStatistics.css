@@ -1,6 +1,8 @@
 .dataStatistics {
-  width: 100%;
-  padding: 20px;
+  flex-grow: 1; 
+  height: 100%;
+  overflow: hidden; 
+  padding: 0;
   box-sizing: border-box;
 }
 

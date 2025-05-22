@@ -1,7 +1,5 @@
 import React from 'react';
 import Actuator from '../../components/DashBoardSection/Actuator';
-import Ai from './sections/Ai/Ai';
-import Energy from './sections//Energy/Energy';
 import Weather from '../../components/DashBoardSection/Weather';
 import UsageStatus from '../../components/DashBoardSection/UseStatus';
 import SensorMonitor from '../../components/DashBoardSection/SensorMonitor';
@@ -10,17 +8,28 @@ import './DashBoard.css';
 // 이름 수정: Dashboard → DashBoard
 const DashBoard = () => {
   return (
-    <div className="dashboard" data-model-id="38:787">
-      <div className="div-3">
-        <SensorMonitor />
-        <Actuator />
-        <Energy />
-        <UsageStatus />
-        <Weather />
-        <Ai />
+    <div className="dashboard">
+    <div className="dashboard-main">
+      <div className="content-layout">
+        <div className="bottom-row">
+          {/* 왼쪽 열: 센서카드 + 현재기온 */}
+          <div className="sensor-weather-column">
+            <SensorMonitor />
+            <div className="weather-box">
+              <Weather />
+            </div>
+          </div>
+
+          {/* 오른쪽 열: 상태 + 제어 */}
+          <div className="side-info">
+            <UsageStatus />
+            <Actuator />
+          </div>
+        </div>
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 // 이름 통일

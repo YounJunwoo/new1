@@ -1,189 +1,136 @@
-.dashboard {
-  background-color: #068b0033;
+/* 공통 박스 스타일 */
+.box-common {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* 전체 레이아웃 (.dashboard)= App.css 부분에 main-content로 클래스가 있음*/
+
+.dashboard-main {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex: 1;
+  overflow: hidden;
+}
+
+.content-layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.bottom-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  height: 90%;
+}
+
+/* 센서 + 현재기온 묶음 */
+.sensor-weather-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1.5;
+  gap: 20px;
+  min-height: 100%;
+}
+
+/* 현재기온 박스 */
+.weather-box {
+  flex: 2;
+  min-height: 100%;
+}
+
+/* 사이드 정보 영역 */
+.side-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 20px;
+}
+
+/* 개별 박스들 (공통 스타일은 box-common으로 대체) */
+.weather,
+.usage-status,
+.actuator {
+  flex: 1;
+  min-height: 200px;
   width: 100%;
-}
-
-.dashboard .temperature-2 {
-  background-color: #ffffff;
+  height: 70%;
+  position: static;
   border-radius: 5px;
-  box-shadow: 0px 4px 10px #00000033;
-  height: 230px;
-  left: 633px;
-  overflow: hidden;
-  position: absolute;
-  top: 215px;
-  width: 186px;
 }
 
-.dashboard .text-wrapper-31 {
-  color: #212121;
-  font-family: 'Inter', Helvetica;
-  font-size: 50px;
-  font-weight: 700;
-  left: 42px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
+/* 센서 카드 그룹 */
+.sensor-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* 센서 카드 스타일 */
+.card {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
   text-align: center;
-  top: 87px;
-  width: 101px;
+  flex: 0 0 160px;
+  height: 150px;
+  box-sizing: border-box;
 }
 
-.dashboard .text-wrapper-32 {
-  color: #000000;
-  font-family: 'Inter', Helvetica;
-  font-size: 23px;
-  font-weight: 700;
-  left: 124px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 190px;
-  width: 60px;
-}
-
-.dashboard .text-wrapper-33 {
-  color: #212121;
-  font-family: 'Inter', Helvetica;
-  font-size: 26px;
+.card-title {
+  font-size: 16px;
   font-weight: 600;
-  left: -7px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 23px;
-  width: 100px;
+  margin-bottom: 4px;
 }
 
-.dashboard .humidity {
+.card-value {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.card-unit {
+  font-size: 14px;
+  color: #666;
+}
+
+/* 반응형 센서 카드 조정 */
+@media (max-width: 1024px) {
+  .card {
+    flex: 1 1 48%;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex: 1 1 100%;
+  }
+}
+
+.weather-box {
+  flex: 2;
   background-color: #ffffff;
   border-radius: 5px;
-  box-shadow: 0px 4px 10px #00000033;
-  height: 230px;
-  left: 833px;
-  overflow: hidden;
-  position: absolute;
-  top: 215px;
-  width: 186px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  min-height: 200px;
+  box-sizing: border-box;
 }
 
-.dashboard .co {
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0px 4px 10px #00000033;
-  height: 230px;
-  left: 1033px;
-  overflow: hidden;
-  position: absolute;
-  top: 215px;
-  width: 186px;
-}
-
-.dashboard .topic {
-  color: #212121;
-  font-family: 'Inter', Helvetica;
-  font-size: 26px;
-  font-weight: 600;
-  left: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 22px;
-  width: 100px;
-}
-
-.dashboard .unit {
-  color: #000000;
-  font-family: 'Inter', Helvetica;
-  font-size: 23px;
-  font-weight: 700;
-  left: 126px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 190px;
-  width: 60px;
-}
-
-.dashboard .insolation {
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0px 4px 10px #00000033;
-  height: 230px;
-  left: 1233px;
-  overflow: hidden;
-  position: absolute;
-  top: 215px;
-  width: 193px;
-}
-
-.dashboard .insolation-unit {
-  color: #000000;
-  font-family: 'Inter', Helvetica;
-  font-size: 23px;
-  font-weight: 700;
-  left: 89px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 190px;
-  width: 108px;
-}
-
-.dashboard .insolation-topic {
-  color: #212121;
-  font-family: 'Inter', Helvetica;
-  font-size: 26px;
-  font-weight: 600;
-  left: 7px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 20px;
-  width: 100px;
-}
-
-.dashboard .insolation-data {
-  color: #212121;
-  font-family: 'Inter', Helvetica;
-  font-size: 50px;
-  font-weight: 700;
-  left: 25px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 87px;
-  width: 143px;
-}
-
-.dashboard .overlap-19 {
-  height: 70px;
-  left: -1px;
-  position: absolute;
-  top: 0;
-  width: 1440px;
-}
-
-
-.dashboard .text-wrapper-34 {
-  color: #ffffff;
-  font-family: 'Inter', Helvetica;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-
-.dashboard .text-wrapper-35 {
-  font-size: 32px;
-}
 

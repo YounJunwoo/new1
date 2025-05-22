@@ -22,7 +22,7 @@ const Sidebar = () => {
           <Link to="/DataStatistics">데이터 통계</Link>
         </li>
         <li>
-          <Link to="/Chatting">챗봇</Link>
+          <Link to="/chat">챗봇</Link>
         </li>
         <li>
           <Link to="/Setting">설정</Link>

@@ -10,26 +10,36 @@ const SensorMonitor = ({ warningNotification }) => {
 
   return (
     <>
-      <div className="temperature-2">
-        <div className="text-wrapper-31">{sensorData?.temperature ?? '-'}</div>
-        <div className="text-wrapper-32">°C</div>
-        <div className="text-wrapper-33">온도</div>
-      </div>
-      <div className="humidity">
-        <div className="text-wrapper-32">%</div>
-        <div className="text-wrapper-33">습도</div>
-        <div className="text-wrapper-31">{sensorData?.humidity ?? '-'}</div>
-      </div>
-      <div className="co">
-        <div className="topic">CO₂농도</div>
-        <div className="text-wrapper-31">{sensorData?.co2 ?? '-'}</div>
-        <div className="unit">ppm</div>
-      </div>
-      <div className="insolation">
-        <div className="insolation-unit">wh/㎡</div>
-        <div className="insolation-topic">일사량</div>
-        <div className="insolation-data">{sensorData?.light ?? '-'}</div>
-      </div>
+      <div className="sensor-wrapper">
+  <div className="sensor-row">
+    <div className="card temperature">
+      <div className="card-title">온도</div>
+      <div className="card-value">{sensorData?.temperature ?? '-'}</div>
+      <div className="card-unit">°C</div>
+    </div>
+    <div className="card humidity">
+      <div className="card-title">습도</div>
+      <div className="card-value">{sensorData?.humidity ?? '-'}</div>
+      <div className="card-unit">%</div>
+    </div>
+    <div className="card soil">
+      <div className="card-title">토양습도</div>
+      <div className="card-value">{sensorData?.soil ?? '-'}</div>
+      <div className="card-unit">%</div>
+    </div>
+    <div className="card insolation">
+      <div className="card-title">일사량</div>
+      <div className="card-value">{sensorData?.light ?? '-'}</div>
+      <div className="card-unit">wh/㎡</div>
+    </div>
+    <div className="card water">
+      <div className="card-title">물통칸</div>
+      <div className="card-value">{sensorData?.water ?? '-'}</div>
+      <div className="card-unit">%</div>
+    </div>
+  </div>
+</div>
+
     </>
   );
 };

@@ -1,24 +1,20 @@
 .actuator {
+  width: 100%;
+  height: auto;
   background-color: #ffffff;
-  border-radius: 5px;
-  height: 540px;
-  left: 1033px;
-  overflow: hidden;
-  position: absolute;
-  top: 463px;
-  width: 393px;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* 제목 + 스위치 수평 정렬 */
 .actuator-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 24px 12px 24px;
-  height: 70px;
+  margin-bottom: 20px;
 }
 
-/* 제목 */
 .actuator-topic {
   color: #212121;
   font-family: 'Inter', Helvetica;
@@ -26,17 +22,13 @@
   font-weight: 600;
 }
 
-/* 슬라이드 + 텍스트 묶음 */
 .toggle-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  margin-top: 25px;
-  margin-right: 20px;
 }
 
-/* 슬라이드 스위치 */
 .switch {
   position: relative;
   display: inline-block;
@@ -48,7 +40,6 @@
   opacity: 0;
   width: 0;
   height: 0;
-  position: absolute;
 }
 
 .slider {
@@ -83,61 +74,31 @@ input:checked + .slider::before {
   transform: translateX(34px);
 }
 
-/* 스위치 아래 수동/자동 텍스트 */
 .toggle-status-text {
   text-align: center;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 20px;
   color: #333;
 }
 
-/* 공통 장치 박스 */
-.pump,
-.fan,
-.window {
+.pump {
+  margin-top: 20px;
   background-color: #d9d9d980;
   height: 68px;
-  left: 24px;
-  position: absolute;
-  width: 336px;
+  width: 100%;
   border-radius: 10px;
+  position: relative;
 }
 
-.pump {
-  top: 152px;
-}
-
-.fan {
-  top: 270px;
-}
-
-.window {
-  top: 388px;
-  width: 338px; /* 기존 코드 유지 */
-}
-
-/* 텍스트 공통 */
-.pump-text,
-.fan-text,
-.window-motor-text {
-  color: #212121;
-  font-family: 'Inter', Helvetica;
-  font-size: 23px;
-  font-weight: 600;
-  left: 28px;
-  letter-spacing: 0;
-  line-height: normal;
+.pump-text {
   position: absolute;
   top: 16px;
-  white-space: nowrap;
+  left: 24px;
+  font-size: 23px;
+  font-weight: 600;
+  color: #212121;
 }
 
-.window-motor-text {
-  top: 18px;
-  width: 144px;
-}
-
-/* 버튼 */
 .icon-button {
   position: absolute;
   right: 20px;
@@ -165,6 +126,5 @@ input:checked + .slider::before {
   background-color: #cccccc;
   cursor: not-allowed;
 }
-
 /* 🔥 불필요한 .overlap-2 제거됨 */
 /* 🔥 불필요한 .toggle-labels, .off-variant3, .expansion-icon 등 제거됨 */

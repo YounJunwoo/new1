@@ -17,11 +17,20 @@ const FormLogin = ({
 
   const handleLogin = (e) => {
     e.preventDefault(); // 폼 제출 시 새로고침 방지
-    if (email && password) {
-      navigate(to); // 예: "/dashboard"
-    } else {
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email || !password) {
       alert('이메일과 비밀번호를 입력하세요.');
+      return;
     }
+
+    if (!emailRegex.test(email)) {
+      alert('유효한 이메일 형식이 아닙니다.');
+      return;
+    }
+
+    navigate(to); // 예: "/dashboard"
   };
 
   return (
@@ -61,7 +70,7 @@ const FormLogin = ({
           회원가입
         </Link>
         <Link to="/findpassword" className="sub-button">
-          비밀번호 찾기
+          아이디/비밀번호 찾기
         </Link>
       </div>
     </form>

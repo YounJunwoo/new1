@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 
 import FormLogin from '../../components/FormLogin/FormLogin';
 
-
-
-
 import './style.css';
 
 const Login = () => {
