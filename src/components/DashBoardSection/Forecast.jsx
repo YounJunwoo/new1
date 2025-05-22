@@ -37,14 +37,6 @@ const Forecast = ({ lat, lon }) => {
                 최저 {Math.round(item.main.temp_min)}°C
               </div>
             </div>
-
-            <div className="forecast-day-description">
-              {item.weather[0].description}
-            </div>
-            <div className="forecast-day-temp">
-              {Math.round(item.main.temp_max)} /{' '}
-              {Math.round(item.main.temp_min)}°C
-            </div>
           </div>
         ))}
       </div>
