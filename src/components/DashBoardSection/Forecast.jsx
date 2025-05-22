@@ -19,10 +19,10 @@ const Forecast = ({ city }) => {
               alt={item.weather[0].description}
             />
             <div className="forecast-day-description">{item.weather[0].description}</div>
-            <div className="forecast-day-max">최고 
-              <span>{Math.round(item.main.temp_max)}°C</span></div>
-            <div className="forecast-day-min">최저
-              <span>{Math.round(item.main.temp_min)}°C</span></div>
+            <div className="forecast-day-temp">
+              <div className="max-temp">최고 {Math.round(item.main.temp_max)}°C</div>
+              <div className="min-temp">최저 {Math.round(item.main.temp_min)}°C</div>
+            </div>
           </div>
         ))}
       </div>

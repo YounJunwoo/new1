@@ -1,12 +1,12 @@
 .forecast-list {
   display: flex;
   flex-direction: row;
-  gap: 35px;
+  gap: 70px;
   justify-content: center;
 }
 
 .forecast-container {
-  margin-top: 32px;
+  margin-top: -20px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -30,11 +30,19 @@
 .forecast-day-date {
   font-size: 20px;
   font-weight: 750;
-  margin-bottom: 4px;
+  margin-bottom: -10px;
 }
 
-.forecast-container, .forecast-list, .forecast-day {
+.forecast-container,
+.forecast-list,
+.forecast-day {
   background-color: transparent !important;
 }
 
-
+.forecast-day-temp {
+  display: flex;
+  gap: 10px;
+  justify-content: center; /* 가로 정렬 */
+  text-align: center;
+  margin-top: 5px;
+}
