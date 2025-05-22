@@ -33,51 +33,53 @@ const UsageStatus = () => {
         <span className="span">제어장치 사용현황</span>
         <span className="text-wrapper-2">&nbsp;</span>
       </p>
-      <div className="frame">
-        {/* 장치명 컬럼 */}
-        <div className="column-text">
-          <div className="title-cell">
-            <div className="column-title">장치명</div>
+      <div className="table-wrapper">
+        <div className="frame">
+          {/* 장치명 컬럼 */}
+          <div className="column-text">
+            <div className="title-cell">
+              <div className="column-title">장치명</div>
+            </div>
+            {devices.map((device) => (
+              <div className="body-cell" key={device.sensorId}>
+                <div className="div">
+                  <div className="cell-text">{device.name}</div>
+                </div>
+              </div>
+            ))}
           </div>
-          {devices.map((device) => (
-            <div className="body-cell" key={device.sensorId}>
-              <div className="div">
-                <div className="cell-text">{device.name}</div>
+          {/* 사용여부 컬럼 */}
+          <div className="column-text-2">
+            <div className="title-cell-2">
+              <div className="column-title-wrapper">
+                <div className="column-title">기기 사용</div>
               </div>
             </div>
-          ))}
-        </div>
-        {/* 사용여부 컬럼 */}
-        <div className="column-text-2">
-          <div className="title-cell-2">
-            <div className="column-title-wrapper">
-              <div className="column-title">기기 사용</div>
-            </div>
+            {statuses.map((status, idx) => (
+              <div className="body-cell-2" key={devices[idx].sensorId}>
+                {status.isActive ? (
+                  <div className="used-icon" title="사용" />
+                ) : (
+                  <div className="unused-icon" title="미사용" />
+                )}
+              </div>
+            ))}
           </div>
-          {statuses.map((status, idx) => (
-            <div className="body-cell-2" key={devices[idx].sensorId}>
-              {status.isActive ? (
-                <div className="used-icon" title="사용" />
-              ) : (
-                <div className="unused-icon" title="미사용" />
-              )}
-            </div>
-          ))}
-        </div>
-        {/* 수동/자동 컬럼 */}
-        <div className="column-text">
-          <div className="title-cell-3">
-            <div className="text-wrapper-3">
-              <div className="column-title-2">수동/자동</div>
-            </div>
-          </div>
-          {devices.map((_, idx) => (
-            <div className="body-cell" key={idx}>
-              <div className="div">
-                <div className="text-wrapper-5"></div>
+          {/* 수동/자동 컬럼 */}
+          <div className="column-text">
+            <div className="title-cell-3">
+              <div className="text-wrapper-3">
+                <div className="column-title-2">수동/자동</div>
               </div>
             </div>
-          ))}
+            {devices.map((_, idx) => (
+              <div className="body-cell" key={idx}>
+                <div className="div">
+                  <div className="text-wrapper-5"></div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="legend-wrapper">

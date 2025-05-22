@@ -14,7 +14,7 @@
   font-weight: 600;
   margin-bottom: 10px;
   color: #212121;
-  margin-top: 0;
+  margin-top: 10px;
 }
 
 .frame {
@@ -22,6 +22,10 @@
   gap: 10px;
   width: 100%;
   height: 80%;
+}
+
+.table-wrapper {
+  margin-top: 35px;
 }
 
 .column-text,
@@ -100,20 +104,32 @@
   color: #000000;
 }
 
-.used,
-.unused {
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: 15px;
-  display: inline-block;
-  margin-right: 16px;
-  gap: 12px;
-}
-
 .legend-wrapper {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 0px;
+  margin-top: 80px;
   align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.legend-text {
+  margin-left: 2px;
+}
+
+.used,
+.unused {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  gap: 6px;
 }
