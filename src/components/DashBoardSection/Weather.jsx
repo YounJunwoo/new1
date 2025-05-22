@@ -44,7 +44,6 @@ const Weather = () => {
       <div className="weather">
         <div className="overlap-5">
           <div className="overlap-6">
-            <div className="weather-topic">날씨</div>
             <div className="weather-main-row">
               <div className="weather-info">
                 <div className="city-name">{CITY}</div>

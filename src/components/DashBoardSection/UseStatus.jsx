@@ -1,28 +1,25 @@
-import React, { useRef } from "react";
-import useSensorStatus from "../../hooks/useSensorStatus";
-import "./UseStatus.css";
+import React, { useRef } from 'react';
+import useSensorStatus from '../../hooks/useSensorStatus';
+import './UseStatus.css';
 
 const devices = [
-  { name: "관수 펌프", sensorId: "pump" },
-  { name: "LED", sensorId: "led" },
-  { name: "온도센서", sensorId: "temp-sensor" },
-  { name: "습도센서", sensorId: "humidity-sensor" },
+  { name: '관수 펌프', sensorId: 'pump' },
+  { name: 'LED', sensorId: 'led' },
+  { name: '온도센서', sensorId: 'temp-sensor' },
+  { name: '습도센서', sensorId: 'humidity-sensor' },
 ];
 
 const UsageStatus = () => {
-  // 각 장치별로 이전 상태를 기억
   const prevStatuses = useRef(Array(devices.length).fill(false));
 
   // 훅을 컴포넌트 최상위에서 순서대로 호출
-  const pump = useSensorStatus("pump");
-  const led = useSensorStatus("led");
-  const temp = useSensorStatus("temp-sensor");
-  const humidity = useSensorStatus("humidity-sensor");
-
+  const pump = useSensorStatus('pump');
+  const led = useSensorStatus('led');
+  const temp = useSensorStatus('temp-sensor');
+  const humidity = useSensorStatus('humidity-sensor');
 
   const rawStatuses = [pump, led, temp, humidity];
 
-  // 로딩 중이면 이전 상태를 유지
   const statuses = rawStatuses.map((status, idx) => {
     if (!status.loading) {
       prevStatuses.current[idx] = status.isActive;
@@ -39,7 +36,9 @@ const UsageStatus = () => {
       <div className="frame">
         {/* 장치명 컬럼 */}
         <div className="column-text">
-          <div className="title-cell" />
+          <div className="title-cell">
+            <div className="column-title">장치명</div>
+          </div>
           {devices.map((device) => (
             <div className="body-cell" key={device.sensorId}>
               <div className="div">
@@ -81,11 +80,16 @@ const UsageStatus = () => {
           ))}
         </div>
       </div>
-      {/* 아래는 전체 범례(legend)로 남겨둡니다 */}
-      <div className="used-icon" />
-      <div className="unused-icon" />
-      <div className="used">사용</div>
-      <div className="unused">미사용</div>
+      <div className="legend-wrapper">
+        <div className="used">
+          <div className="used-icon" />
+          사용
+        </div>
+        <div className="unused">
+          <div className="unused-icon" />
+          미사용
+        </div>
+      </div>
     </div>
   );
 };

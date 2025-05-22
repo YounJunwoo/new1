@@ -27,10 +27,10 @@ const Sidebar = () => {
         <li>
           <Link to="/Setting">설정</Link>
         </li>
+        <div className="sidebar-clock">
+          <Clock />
+        </div>
       </ul>
-      <div className="sidebar-clock">
-        <Clock />
-      </div>
       <div
         className="logoutbutton"
         onClick={handleLogout}

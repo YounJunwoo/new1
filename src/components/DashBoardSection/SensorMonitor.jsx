@@ -1,5 +1,6 @@
 import React from 'react';
 import useSensorMonitor from '../../hooks/useSensorMonitor';
+import './SensorMonitor.css'; // 꼭 있어야 적용됨
 
 const SensorMonitor = ({ warningNotification }) => {
   const { sensorData, loading } = useSensorMonitor(warningNotification);
