@@ -1,0 +1,205 @@
+.accountCard {
+  background: #fff;
+  border-radius: 2px;
+  width: 800px;
+  margin: 45px 10px 0 10vw;
+  padding: 48px 48px 24px 48px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.accountHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.accountTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+}
+
+.accountActions button {
+  margin-left: 12px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  background: #eee;
+  color: #222;
+  transition: background 0.2s;
+}
+
+.accountActions .accountAdd {
+  background: #078b00;
+  color: #fff;
+}
+.accountActions .accountAdd:hover,
+.accountActions .accountAdd:active {
+  background: #066a00;
+}
+
+.accountActions .accountDelete {
+  background: #ccc;
+  color: #222;
+}
+.accountActions .accountDelete:hover,
+.accountActions .accountDelete:active {
+  background: #b3b3b3;
+}
+
+.accountActions .accountSync {
+  background: #eee;
+  color: #222;
+  font-size: 20px;
+  padding: 14px 18px;
+}
+.accountActions .accountSync:hover,
+.accountActions .accountSync:active {
+  background: #e0e0e0;
+}
+
+.accountTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.accountTable th,
+.accountTable td {
+  border-bottom: 1.5px solid #e0e0e0;
+  text-align: left;
+  padding: 16px 12px;
+  font-size: 20px;
+}
+
+.accountTable th {
+  background: #f5f5f5;
+  font-weight: 700;
+}
+
+.accountActive {
+  color: #078b00;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.accountInactive {
+  color: #888;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.dot,
+.dotInactive {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #078b00;
+}
+
+.dotInactive {
+  background: #ccc;
+}
+
+.accountPagination {
+  text-align: right;
+  color: #222;
+  font-size: 18px;
+  margin-top: 16px;
+}
+
+@media (max-width: 1024px) {
+  .accountCard {
+    width: 95vw;
+    margin: 24px 2vw 0 2vw;
+    padding: 24px 12px 16px 12px;
+  }
+  .accountTitle {
+    font-size: 22px;
+  }
+  .accountActions button {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+  .accountTable th,
+  .accountTable td {
+    font-size: 16px;
+    padding: 10px 6px;
+  }
+  .accountActive,
+  .accountInactive {
+    font-size: 16px;
+  }
+  .accountPagination {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .accountCard {
+    width: 100vw;
+    margin: 8px 0 0 0;
+    padding: 8px 2px 8px 2px;
+    border-radius: 0;
+  }
+  .accountHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .accountTitle {
+    font-size: 16px;
+  }
+  .accountActions button {
+    font-size: 12px;
+    padding: 6px 8px;
+    margin-left: 4px;
+  }
+  .accountTable th,
+  .accountTable td {
+    font-size: 12px;
+    padding: 6px 2px;
+  }
+  .accountActive,
+  .accountInactive {
+    font-size: 12px;
+  }
+  .dot,
+  .dotInactive {
+    width: 10px;
+    height: 10px;
+    margin-right: 4px;
+  }
+  .accountPagination {
+    font-size: 10px;
+    margin-top: 8px;
+  }
+}
+
+.rightShift {
+  padding-left: 60px !important;
+}
+
+.maskedInfo {
+  font-size: 18px;
+  padding-left: 40px;
+}
+
+.verifyButton {
+  margin-left: 10px;
+  padding: 4px 8px;
+  font-size: 14px;
+  border: none;
+  background-color: #eee;
+  border-radius: 4px;
+  cursor: pointer;
+}

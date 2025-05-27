@@ -5,9 +5,9 @@ import './Actuator.css';
 const Actuator = () => {
   const [isManual, setIsManual] = React.useState(true);
 
-  const pump = useActuatorControl("pump");
- // const fan = useActuatorControl("fan");
- // const windowMotor = useActuatorControl("window-motor");
+  const pump = useActuatorControl('pump');
+  // const fan = useActuatorControl("fan");
+  // const windowMotor = useActuatorControl("window-motor");
 
   return (
     <div className="actuator">
@@ -22,9 +22,7 @@ const Actuator = () => {
             />
             <span className="slider" />
           </label>
-          <div className="toggle-status-text">
-            {isManual ? '수동' : '자동'}
-          </div>
+          <div className="toggle-status-text">{isManual ? '수동' : '자동'}</div>
         </div>
       </div>
 
@@ -35,11 +33,11 @@ const Actuator = () => {
           onClick={() => isManual && pump.toggleSensor(!pump.isOn)}
           disabled={!isManual || pump.loading}
         >
-          {pump.loading ? "..." : pump.isOn ? 'ON' : 'OFF'}
+          {pump.loading ? '...' : pump.isOn ? 'ON' : 'OFF'}
         </button>
       </div>
 
-    { /* <div className="fan">
+      {/* <div className="fan">
         <div className="fan-text">냉각팬</div>
         <button
           className={`icon-button ${fan.isOn ? 'on' : 'off'}`}

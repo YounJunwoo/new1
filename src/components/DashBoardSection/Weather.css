@@ -72,14 +72,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-<<<<<<< HEAD
   gap: 10px;
   margin-top: 20px;
-=======
-  gap: 12px;
-  margin-top: 28px;
-  margin-left: 10px;
->>>>>>> upstream/main
 }
 .weather-layout {
   display: flex;

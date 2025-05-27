@@ -8,6 +8,7 @@ import Sidebar from './components/Sidebar';
 import DataStatistics from './pages/DataStatistics';
 import useSensorMonitor from './hooks/useSensorMonitor';
 import usePushNotification from './hooks/usePushNotification';
+import PersonalInformation from './pages/PersonalInformation';
 
 import Login from './pages/Login/Login'; // 로그인
 import SignUp from './pages/SignUp/SignUp'; // 회원가입
@@ -56,6 +57,10 @@ function App() {
             <Route path="/Setting" element={<Setting />} />
             <Route path="/SettingAccount" element={<SettingAccount />} />
             <Route path="/DataStatistics" element={<DataStatistics />} />
+            <Route
+              path="/PersonalInformation"
+              element={<PersonalInformation />}
+            />
           </Routes>
         </div>
       </div>
